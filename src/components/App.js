@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { LoadingBar } from "react-redux-loading-bar";
 import { Route, Routes } from "react-router-dom";
 
-import { RootPathurl } from "../constants/path";
+import { RootPathUrl } from "../constants/path";
 import Home from "./Home";
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
       <LoadingBar />
       <div className="container">
         <Routes>
-          <Route path={RootPathurl} exact element={<Home />} />
+          <Route path={RootPathUrl} exact element={<Home />} />
         </Routes>
       </div>
     </Fragment>
