@@ -3,8 +3,16 @@ import { connect } from "react-redux";
 import { LoadingBar } from "react-redux-loading-bar";
 import { Route, Routes } from "react-router-dom";
 
-import { RootPathUrl } from "../constants/path";
+import {
+  NewQuestionUrl,
+  QuestionUrl,
+  RootPathUrl,
+  SignInUrl,
+} from "../constants/path";
 import Home from "./Home";
+import NewQuestion from "./NewQuestion";
+import QuestionPage from "./QuestionPage";
+import SignIn from "./SignIn";
 
 const App = () => {
   return (
@@ -12,7 +20,10 @@ const App = () => {
       <LoadingBar />
       <div className="container">
         <Routes>
-          <Route path={RootPathUrl} exact element={<Home />} />
+          <Route path={SignInUrl} exact element={<SignIn />} />
+          <Route path={NewQuestionUrl} element={<NewQuestion />} />
+          <Route path={QuestionUrl} element={<QuestionPage />} />
+          <Route path={RootPathUrl} element={<Home />} />
         </Routes>
       </div>
     </Fragment>
