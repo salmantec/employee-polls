@@ -9,6 +9,7 @@ import {
   QuestionUrl,
   RootPathUrl,
   SignInUrl,
+  SignOutUrl,
 } from "../constants/path";
 import Home from "./Home";
 import LeaderBoard from "./LeaderBoard";
@@ -18,6 +19,7 @@ import QuestionPage from "./QuestionPage";
 import SignIn from "./SignIn";
 import PageNotFound from "./PageNotFound";
 import { handleInitialData } from "../actions/shared";
+import SignOut from "./SignOut";
 
 const App = (props) => {
   useEffect(() => {
@@ -33,7 +35,7 @@ const App = (props) => {
           <Route path={QuestionUrl} element={<QuestionPage />} />
           <Route path={RootPathUrl} element={<Home />} />
           <Route path={LeaderBoardUrl} element={<LeaderBoard />} />
-
+          <Route path={SignOutUrl} element={<SignOut />} />
           <Route path={OtherUrl} element={<PageNotFound />} />
         </Routes>
       ) : (
