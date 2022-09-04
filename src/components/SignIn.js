@@ -49,8 +49,7 @@ const SignIn = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const username = data.get("username");
+    const username = usernameValue;
 
     if (users[username]) {
       new Promise((res, rej) => {
@@ -96,7 +95,6 @@ const SignIn = (props) => {
             </Select>
             <TextField
               margin="normal"
-              required
               fullWidth
               name="password"
               label="Password"
