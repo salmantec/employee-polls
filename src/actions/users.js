@@ -29,7 +29,7 @@ function addAnswerToUser(questionId, answer, authedUser) {
   };
 }
 
-export function handleAddAnswerToQuestion(questionId, answer, authedUser) {
+export function handleAddAnswerToQuestion(authedUser, questionId, answer) {
   return (dispatch) => {
     return saveQuestionAnswer(authedUser, questionId, answer).then(
       (success) => {
