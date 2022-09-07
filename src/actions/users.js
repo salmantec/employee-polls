@@ -20,22 +20,20 @@ export function newQuestionToUser({ id, author }) {
   };
 }
 
-function addAnswerToUser(questionId, answer, authedUser) {
+function addAnswerToUser(authedUser, qid, answer) {
   return {
     type: ADD_ANSWER_TO_USER,
-    questionId,
-    answer,
     authedUser,
+    qid,
+    answer,
   };
 }
 
-export function handleAddAnswerToQuestion(authedUser, questionId, answer) {
+export function handleAddAnswerToQuestion(authedUser, qid, answer) {
   return (dispatch) => {
-    return saveQuestionAnswer(authedUser, questionId, answer).then(
-      (success) => {
-        dispatch(addAnswerToUser(questionId, answer, authedUser));
-        dispatch(addAnswerToQuestion(questionId, answer, authedUser));
-      }
-    );
+    return saveQuestionAnswer(authedUser, qid, answer).then((success) => {
+      dispatch(addAnswerToUser(authedUser, qid, answer));
+      dispatch(addAnswerToQuestion(authedUser, qid, answer));
+    });
   };
 }

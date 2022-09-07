@@ -1,5 +1,3 @@
-import { showLoading, hideLoading } from "react-redux-loading-bar";
-
 import { saveQuestion } from "../utils/api";
 import { newQuestionToUser } from "./users";
 
@@ -14,12 +12,12 @@ export function receiveQuestions(questions) {
   };
 }
 
-export function addAnswerToQuestion(questionId, answer, authedUser) {
+export function addAnswerToQuestion(authedUser, qid, answer) {
   return {
     type: ADD_ANSWER,
-    questionId,
-    answer,
     authedUser,
+    qid,
+    answer,
   };
 }
 
@@ -32,12 +30,11 @@ function newQuestion(question) {
 
 export function handleNewQuestion(optionOneText, optionTwoText, author) {
   return (dispatch) => {
-    dispatch(showLoading());
-    return saveQuestion({ optionOneText, optionTwoText, author })
-      .then((question) => {
+    return saveQuestion({ optionOneText, optionTwoText, author }).then(
+      (question) => {
         dispatch(newQuestion(question));
         dispatch(newQuestionToUser(question));
-      })
-      .then(() => dispatch(hideLoading()));
+      }
+    );
   };
 }
