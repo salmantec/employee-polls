@@ -11,23 +11,27 @@ export default function users(state = {}, action) {
         ...state,
         ...action.users,
       };
-    case NEW_QUESTION_TO_USER:
+    case ADD_ANSWER_TO_USER:
+      const { authedUser, qid, answer } = action;
+
       return {
         ...state,
-        [action.author]: {
-          ...state[action.author],
-          questions: state[action.author].questions.concat(action.id),
+        [authedUser]: {
+          ...state[authedUser],
+          answers: {
+            ...state[authedUser].answers,
+            [qid]: answer,
+          },
         },
       };
-    case ADD_ANSWER_TO_USER:
+    case NEW_QUESTION_TO_USER:
+      const { id, author } = action;
+
       return {
         ...state,
-        [action.authedUser]: {
-          ...state[action.authedUser],
-          answers: {
-            ...state[action.authedUser].answers,
-            [action.qid]: action.answer,
-          },
+        [author]: {
+          ...state[author],
+          questions: state[author].questions.concat(id),
         },
       };
     default:
