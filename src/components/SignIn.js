@@ -35,6 +35,7 @@ const SignIn = (props) => {
   const [usernameValue, setUsernameValue] = React.useState("");
   const [passwordValue, setPasswordValue] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const { users } = props;
@@ -51,11 +52,14 @@ const SignIn = (props) => {
     event.preventDefault();
     const username = usernameValue;
 
-    if (users[username]) {
+    if (username === "") {
+      setError(true);
+    } else if (users[username]) {
       new Promise((res, rej) => {
         setTimeout(() => res(), 300);
       }).then(() => {
         props.dispatch(setAuthedUser(username));
+        setError(false);
         const redirectTo = new URLSearchParams(search).get("redirectTo");
         redirectTo && redirectTo !== ""
           ? navigate(redirectTo)
@@ -79,14 +83,21 @@ const SignIn = (props) => {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
+          {error && (
+            <Typography
+              color="error"
+              className={"Error"}
+              data-testid="error-header"
+            >
+              &nbsp;{"You should pick one user from dropdown list"}&nbsp;
+            </Typography>
+          )}
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <label>Select user:</label>
             <Select
-              labelId="demo-simple-select-helper-label"
-              id="demo-simple-select-helper"
+              labelId="demo-simple-select-required-label"
+              id="demo-simple-select-required"
               label="Username"
-              value={
-                usernameValue === "" ? Object.keys(users)[0] : usernameValue
-              }
               onChange={handleUsernameChange}
             >
               {Object.keys(users).map((item) => (

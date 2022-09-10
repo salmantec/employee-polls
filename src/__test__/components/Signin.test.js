@@ -126,3 +126,40 @@ describe("SignIn component - Snapshot testing", () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 });
+
+describe("FireEvent testing with SignIn component", () => {
+  let store;
+  let component;
+
+  let users = usersData;
+  const history = createMemoryHistory();
+  beforeEach(() => {
+    store = mockStore({
+      authedUser: "test-user-id",
+      users: users,
+    });
+
+    component = renderer.create(
+      <Provider store={store}>
+        <Router location={history.location} navigator={history}>
+          <SignIn />
+        </Router>
+      </Provider>
+    );
+  });
+
+  test("If we do not pick one user from dropdown list, then it should popup the error message", () => {
+    component = render(
+      <Provider store={store}>
+        <Router location={history.location} navigator={history}>
+          <SignIn />
+        </Router>
+      </Provider>
+    );
+    var password = component.getByTestId("password").querySelector("input");
+    fireEvent.change(password, { target: { value: "123456" } });
+    var signInButton = component.getByTestId("sign-in");
+    fireEvent.click(signInButton);
+    expect(component.getByTestId("error-header")).toBeInTheDocument();
+  });
+});
