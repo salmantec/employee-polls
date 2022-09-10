@@ -90,7 +90,9 @@ const SignIn = (props) => {
               onChange={handleUsernameChange}
             >
               {Object.keys(users).map((item) => (
-                <MenuItem value={users[item].id}>{users[item].name}</MenuItem>
+                <MenuItem key={users[item].id} value={users[item].id}>
+                  {users[item].name}
+                </MenuItem>
               ))}
             </Select>
             <TextField
