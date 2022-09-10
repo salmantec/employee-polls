@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#00FFCF",
+    backgroundColor: "inherit",
     color: theme.palette.common.black,
     fontSize: 24,
   },

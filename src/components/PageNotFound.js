@@ -32,7 +32,7 @@ const PageNotFound = (props) => {
           {props.userLoggedIn ? (
             <Button
               variant="contained"
-              color="primary"
+              color="inherit"
               align="center"
               onClick={(e) => handleClick(e, RootPathUrl)}
             >
@@ -41,7 +41,7 @@ const PageNotFound = (props) => {
           ) : (
             <Button
               variant="contained"
-              color="primary"
+              color="inherit"
               align="center"
               onClick={(e) => handleClick(e, SignInUrl)}
             >

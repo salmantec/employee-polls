@@ -140,7 +140,7 @@ const QuestionDashBoard = (props) => {
                         <Box border="1px solid" padding="3px" marginTop="1px">
                           <Button
                             variant="contained"
-                            color="primary"
+                            color="inherit"
                             fullWidth
                             sx={{ mt: 0.5, mb: 0.5 }}
                             onClick={(e) => {

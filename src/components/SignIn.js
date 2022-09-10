@@ -123,6 +123,7 @@ const SignIn = (props) => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               data-testid="sign-in"
+              color="inherit"
             >
               Sign In
             </Button>

@@ -75,6 +75,7 @@ const NewQuestion = (props) => {
               type="submit"
               fullWidth
               variant="contained"
+              color="inherit"
               sx={{ mt: 3, mb: 2 }}
             >
               Submit

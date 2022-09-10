@@ -18,14 +18,13 @@ const NavButton = (props) => {
     >
       <Button
         color="inherit"
-        // theme={theme}
         sx={{
           ":hover": {
-            bgcolor: "white",
-            color: "black",
+            bgcolor: "black",
+            color: "white",
           },
           width: "90px",
-          color: "white",
+          color: "black",
         }}
       >
         {props.text}
@@ -38,7 +37,7 @@ const Nav = (props) => {
   const location = useLocation();
   return (
     <div>
-      <AppBar position="static">
+      <AppBar position="static" color="inherit" enableColorOnDark>
         <Toolbar>
           <Stack
             direction="row"
