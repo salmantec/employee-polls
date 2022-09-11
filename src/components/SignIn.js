@@ -98,6 +98,7 @@ const SignIn = (props) => {
               labelId="demo-simple-select-required-label"
               id="demo-simple-select-required"
               label="Username"
+              value={usernameValue}
               onChange={handleUsernameChange}
             >
               {Object.keys(users).map((item) => (
